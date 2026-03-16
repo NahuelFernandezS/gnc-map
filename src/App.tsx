@@ -17,7 +17,7 @@ function App() {
     if (coordinates) {
       setIsDataLoading(true);
       setDataError(null);
-      getNearbyStations(coordinates.lat, coordinates.lng, 30)
+      getNearbyStations(coordinates.lat, coordinates.lng, 10)
         .then(setStations)
         .catch((err) => setDataError(err.message))
         .finally(() => setIsDataLoading(false));
@@ -40,10 +40,10 @@ function App() {
           onStationClick={handleStationClick}
           isLoading={isLoading}
         />
-        
+
         {/* Map Component */}
         <div className="flex-1 w-full h-2/3 md:h-full relative">
-          <StationMap 
+          <StationMap
             coordinates={coordinates}
             stations={stations}
             selectedStation={selectedStation}
